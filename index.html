@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Ledgerwise — Bitcoin &amp; Crypto Fundamentals</title>
+<meta name="description" content="A plain-language reference for how Bitcoin and crypto actually work: the 21 million supply cap, halvings, keys and self-custody, and the risks nobody should skip.">
+
+<!-- REPLACE every SITE_URL below with your live address, e.g.
+     https://vanshbansal.github.io/ledgerwise/   (keep the trailing slash) -->
+<link rel="canonical" href="https://your-username.github.io/ledgerwise/">
+<meta name="theme-color" content="#0b0d10">
+<meta name="author" content="Vansh Bansal">
+
+<!-- Open Graph (Facebook, WhatsApp, LinkedIn, Instagram DMs) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ledgerwise">
+<meta property="og:title" content="Ledgerwise — Understand the ledger before you trust it">
+<meta property="og:description" content="Bitcoin and crypto explained without the hype: the 21 million cap, the halving schedule, keys and custody, a phishing test, and the risks that get skipped.">
+<meta property="og:url" content="https://your-username.github.io/ledgerwise/">
+<meta property="og:image" content="https://your-username.github.io/ledgerwise/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Ledgerwise — Understand the ledger before you trust it">
+<meta property="og:locale" content="en_IN">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ledgerwise — Understand the ledger before you trust it">
+<meta name="twitter:description" content="Bitcoin and crypto explained without the hype: supply cap, halvings, self-custody, a phishing test, and the risks that get skipped.">
+<meta name="twitter:image" content="https://your-username.github.io/ledgerwise/og-image.png">
+<meta name="twitter:image:alt" content="Ledgerwise — Understand the ledger before you trust it">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23f7931a'/%3E%3Ctext x='16' y='23' font-family='Arial' font-size='19' font-weight='bold' fill='%2312100c' text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23f7931a'/%3E%3Ctext x='16' y='23' font-family='Arial' font-size='19' font-weight='bold' fill='%2312100c' text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Ledgerwise",
+  "alternateName": "Ledgerwise — Bitcoin & Crypto Fundamentals",
+  "url": "https://your-username.github.io/ledgerwise/",
+  "description": "A plain-language reference for how Bitcoin and crypto assets actually work: supply, halvings, keys, custody and risk.",
+  "inLanguage": "en",
+  "author": {
+    "@type": "Person",
+    "name": "Vansh Bansal",
+    "sameAs": "https://www.instagram.com/vanshbansal_08"
+  }
+}
+</script>
+
+<style>
+  :root{
+    --bg:#0b0d10;
+    --bg-soft:#11141a;
+    --panel:#14181f;
+    --line:#222834;
+    --ink:#eef1f6;
+    --muted:#98a2b3;
+    --amber:#f7931a;
+    --amber-soft:rgba(247,147,26,.12);
+    --green:#3ddc97;
+    --red:#ff6b6b;
+    --max:1120px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    line-height:1.65;-webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  .serif{font-family:'Instrument Serif',Georgia,serif;font-weight:400}
+
+  /* ---------- nav ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(11,13,16,.82);backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:600;letter-spacing:-.02em;font-size:1.05rem}
+  .mark{
+    width:30px;height:30px;border-radius:9px;display:grid;place-items:center;
+    background:linear-gradient(140deg,#f7931a,#ffb44d);color:#12100c;font-weight:700;font-size:.95rem;
+    box-shadow:0 4px 18px rgba(247,147,26,.35);
+  }
+  .nav-right{display:flex;align-items:center;gap:22px}
+  .nav-links{display:flex;gap:24px;font-size:.88rem;color:var(--muted)}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links a.active{color:var(--amber)}
+  .nav-follow{
+    display:inline-flex;align-items:center;gap:7px;font-size:.83rem;font-weight:600;
+    padding:8px 14px;border-radius:99px;color:#ffc271;
+    background:var(--amber-soft);border:1px solid rgba(247,147,26,.28);cursor:pointer;
+    font-family:inherit;transition:.18s;
+  }
+  .nav-follow:hover{background:rgba(247,147,26,.2);transform:translateY(-1px)}
+  @media(max-width:960px){.nav-links{display:none}}
+  @media(max-width:520px){.nav-follow span{display:none}.nav-follow{padding:8px 10px}}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;padding:88px 0 56px;overflow:hidden}
+  .hero:before{
+    content:"";position:absolute;inset:-40% -10% auto -10%;height:520px;
+    background:radial-gradient(60% 60% at 50% 0%,rgba(247,147,26,.16),transparent 70%);
+    pointer-events:none;
+  }
+  .hero:after{
+    content:"";position:absolute;inset:0;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:64px 64px;opacity:.22;mask-image:linear-gradient(180deg,#000,transparent 78%);
+    pointer-events:none;
+  }
+  .hero .wrap{position:relative;z-index:2}
+  .badge{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:.76rem;letter-spacing:.09em;text-transform:uppercase;font-weight:600;
+    color:#ffc271;background:var(--amber-soft);border:1px solid rgba(247,147,26,.28);
+    padding:6px 12px;border-radius:99px;
+  }
+  h1{
+    font-size:clamp(2.3rem,5.4vw,4rem);line-height:1.04;letter-spacing:-.035em;
+    margin:22px 0 0;max-width:17ch;font-weight:600;
+  }
+  h1 em{font-style:normal;color:var(--amber)}
+  .lede{margin:20px 0 0;max-width:56ch;color:var(--muted);font-size:1.06rem}
+  .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;padding:12px 22px;border-radius:11px;
+    font-weight:600;font-size:.94rem;border:1px solid transparent;transition:.18s;cursor:pointer;font-family:inherit;
+  }
+  .btn-primary{background:var(--amber);color:#17120a}
+  .btn-primary:hover{background:#ffab3d;transform:translateY(-1px)}
+  .btn-ghost{border-color:var(--line);color:var(--ink);background:var(--panel)}
+  .btn-ghost:hover{border-color:#39424f}
+
+  /* ---------- ticker ---------- */
+  .ticker{
+    margin-top:46px;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+    background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;
+  }
+  .tick{background:var(--bg-soft);padding:18px 20px}
+  .tick .k{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:#7d8798;font-weight:600}
+  .tick .v{font-size:1.32rem;font-weight:600;letter-spacing:-.02em;margin-top:6px;font-variant-numeric:tabular-nums}
+  .tick .d{font-size:.78rem;color:var(--muted);margin-top:2px}
+  .up{color:var(--green)}.down{color:var(--red)}
+  @media(max-width:760px){
+    .ticker{grid-template-columns:repeat(2,1fr)}
+    h1{max-width:100%}
+  }
+
+  /* ---------- sections ---------- */
+  section{padding:76px 0;border-top:1px solid var(--line)}
+  .eyebrow{font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:700}
+  h2{font-size:clamp(1.6rem,3vw,2.2rem);letter-spacing:-.03em;margin:12px 0 0;line-height:1.15}
+  .sub{color:var(--muted);margin:14px 0 0;max-width:62ch}
+
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:38px}
+  @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:600px){.grid{grid-template-columns:1fr}}
+  .card{
+    background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;
+    transition:.2s;
+  }
+  .card:hover{border-color:#333c4a;transform:translateY(-2px)}
+  .card .ico{
+    width:34px;height:34px;border-radius:10px;display:grid;place-items:center;
+    background:var(--amber-soft);color:var(--amber);font-size:1rem;margin-bottom:14px;
+  }
+  .card h3{margin:0 0 8px;font-size:1.02rem;letter-spacing:-.01em}
+  .card p{margin:0;color:var(--muted);font-size:.92rem}
+  .card .num{
+    font-family:'Instrument Serif',Georgia,serif;font-size:1.5rem;color:var(--amber);
+    display:block;margin-bottom:4px;
+  }
+
+  /* ---------- table ---------- */
+  .tablebox{margin-top:34px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--panel)}
+  table{width:100%;border-collapse:collapse;font-size:.9rem}
+  th,td{padding:14px 18px;text-align:left;border-bottom:1px solid var(--line)}
+  th{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:#7d8798;font-weight:600;background:var(--bg-soft)}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr:hover{background:rgba(255,255,255,.02)}
+  td.mono{font-variant-numeric:tabular-nums;color:#d9e0ea}
+  tr.now td{background:rgba(247,147,26,.07)}
+  .pill{
+    display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    padding:2px 8px;border-radius:99px;background:rgba(247,147,26,.16);color:#ffc271;
+  }
+  .note{color:var(--muted);font-size:.84rem;margin-top:14px}
+
+  /* ---------- halving clock ---------- */
+  #clock{position:relative;overflow:hidden}
+  #clock:before{
+    content:"";position:absolute;inset:auto 0 -60% 0;height:420px;
+    background:radial-gradient(50% 60% at 50% 100%,rgba(247,147,26,.12),transparent 70%);
+    pointer-events:none;
+  }
+  .clockpanel{
+    position:relative;margin-top:38px;border:1px solid #2b3240;border-radius:20px;padding:34px;
+    background:linear-gradient(165deg,#171b22,#0f1216);overflow:hidden;
+  }
+  .clockpanel:before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+    background-size:40px 40px;mask-image:radial-gradient(70% 100% at 50% 0%,#000,transparent);
+  }
+  .clockhead{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap;position:relative}
+  .clocklabel{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:#7d8798;font-weight:700}
+  .clocktitle{font-size:1.15rem;font-weight:600;margin-top:6px;letter-spacing:-.02em}
+  .clockbadge{
+    font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#ffc271;
+    background:var(--amber-soft);border:1px solid rgba(247,147,26,.28);padding:5px 11px;border-radius:99px;
+  }
+  .countdown{
+    position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:26px;
+  }
+  .unit{
+    background:rgba(255,255,255,.028);border:1px solid var(--line);border-radius:14px;
+    padding:18px 10px;text-align:center;
+  }
+  .unit .n{
+    font-size:clamp(1.9rem,5vw,2.9rem);font-weight:600;letter-spacing:-.03em;
+    font-variant-numeric:tabular-nums;line-height:1;color:#fff;
+  }
+  .unit .l{font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;color:#7d8798;margin-top:9px;font-weight:600}
+  .bar{margin-top:26px;position:relative}
+  .bar-track{height:8px;border-radius:99px;background:rgba(255,255,255,.07);overflow:hidden}
+  .bar-fill{
+    height:100%;width:0;border-radius:99px;
+    background:linear-gradient(90deg,#b35f00,#f7931a 60%,#ffc271);
+    box-shadow:0 0 18px rgba(247,147,26,.5);transition:width .8s ease;
+  }
+  .bar-meta{display:flex;justify-content:space-between;gap:12px;font-size:.76rem;color:#7d8798;margin-top:9px;flex-wrap:wrap}
+  .clockstats{
+    position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:28px;
+    background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;
+  }
+  .clockstats div{background:#101318;padding:15px 18px}
+  .clockstats .k{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:#7d8798;font-weight:600}
+  .clockstats .v{font-size:1.02rem;font-weight:600;margin-top:4px;font-variant-numeric:tabular-nums}
+  @media(max-width:700px){
+    .clockpanel{padding:24px}
+    .countdown{grid-template-columns:repeat(2,1fr)}
+    .clockstats{grid-template-columns:1fr}
+  }
+
+  /* ---------- scam lab ---------- */
+  #scam{background:linear-gradient(180deg,#0d1014,#0b0d10)}
+  .lab-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+  .lab-tip{
+    font-size:.8rem;color:var(--muted);border:1px dashed #2c3441;border-radius:10px;
+    padding:9px 14px;background:rgba(255,255,255,.02);
+  }
+  .lab-tip b{color:#ffc271;font-weight:600}
+  .lab-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:32px}
+  @media(max-width:800px){.lab-grid{grid-template-columns:1fr}}
+  .labcard{
+    position:relative;text-align:left;font-family:inherit;cursor:pointer;
+    background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px;
+    color:var(--ink);transition:.2s;overflow:hidden;
+  }
+  .labcard:hover:not(.locked){border-color:#3d4757;transform:translateY(-2px)}
+  .labcard.locked{cursor:default}
+  .labcard .top{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+  .labcard .ic{
+    width:30px;height:30px;border-radius:8px;display:grid;place-items:center;flex:0 0 auto;
+    background:rgba(255,255,255,.05);border:1px solid #2c3441;font-size:.9rem;
+  }
+  .labcard .src{font-size:.76rem;color:#8b95a5;word-break:break-all;font-variant-numeric:tabular-nums}
+  .labcard .tagm{
+    margin-left:auto;flex:0 0 auto;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    color:#7d8798;border:1px solid #2c3441;border-radius:6px;padding:2px 7px;
+  }
+  .labcard h4{margin:0 0 7px;font-size:.98rem;letter-spacing:-.01em}
+  .labcard p{margin:0;font-size:.88rem;color:var(--muted);line-height:1.6}
+  .labcard .verdict{
+    display:none;align-items:center;gap:8px;margin-top:14px;font-size:.8rem;font-weight:600;
+    padding-top:13px;border-top:1px solid var(--line);
+  }
+  .labcard .verdict .dotv{width:8px;height:8px;border-radius:50%;flex:0 0 auto}
+  .labcard.reveal-safe{border-color:rgba(61,220,151,.5);background:rgba(61,220,151,.06)}
+  .labcard.reveal-safe .verdict{display:flex;color:var(--green)}
+  .labcard.reveal-safe .verdict .dotv{background:var(--green);box-shadow:0 0 10px var(--green)}
+  .labcard.reveal-fake{border-color:rgba(255,107,107,.35)}
+  .labcard.reveal-fake .verdict{display:flex;color:var(--red)}
+  .labcard.reveal-fake .verdict .dotv{background:var(--red)}
+  .labcard.dimmed{opacity:.62}
+
+  .result{
+    margin-top:24px;border:1px solid #2b3240;border-radius:16px;padding:24px;
+    background:var(--panel);display:none;
+  }
+  .result.show{display:block;animation:rise .35s ease}
+  @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+  .result .rhead{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .result .verdictbig{font-size:1.1rem;font-weight:600;letter-spacing:-.02em}
+  .result .verdictbig.ok{color:var(--green)}
+  .result .verdictbig.bad{color:var(--red)}
+  .result .rsub{color:var(--muted);font-size:.9rem;margin:10px 0 0}
+  .tells{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:10px}
+  .tells li{display:flex;gap:12px;font-size:.88rem;color:var(--muted);align-items:flex-start}
+  .tells li .n{
+    flex:0 0 auto;width:20px;height:20px;border-radius:6px;display:grid;place-items:center;
+    font-size:.68rem;font-weight:700;background:rgba(255,255,255,.06);color:#c4ccd8;margin-top:2px;
+  }
+  .tells li b{color:var(--ink);font-weight:600}
+  .result .again{margin-top:22px}
+
+  /* ---------- risk ---------- */
+  .risk{background:var(--bg-soft)}
+  .risk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:38px}
+  @media(max-width:700px){.risk-grid{grid-template-columns:1fr}}
+  .risk-item{
+    display:flex;gap:16px;padding:22px;border:1px solid var(--line);border-radius:14px;background:var(--panel);
+  }
+  .risk-item .tag{
+    flex:0 0 auto;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;
+    background:rgba(255,107,107,.12);color:var(--red);font-weight:700;font-size:.85rem;
+  }
+  .risk-item h4{margin:0 0 6px;font-size:.98rem}
+  .risk-item p{margin:0;color:var(--muted);font-size:.9rem}
+
+  /* ---------- glossary ---------- */
+  dl.gloss{display:grid;grid-template-columns:repeat(2,1fr);gap:0 40px;margin-top:34px}
+  @media(max-width:700px){dl.gloss{grid-template-columns:1fr}}
+  dl.gloss div{padding:18px 0;border-bottom:1px solid var(--line)}
+  dt{font-weight:600;font-size:.95rem;margin-bottom:5px}
+  dd{margin:0;color:var(--muted);font-size:.9rem}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--line);padding:44px 0 56px;background:#090b0e}
+  .foot{display:flex;justify-content:space-between;gap:28px;flex-wrap:wrap;align-items:flex-start}
+  .foot p{color:var(--muted);font-size:.85rem;margin:10px 0 0;max-width:52ch}
+  .disclaimer{
+    margin-top:30px;border:1px solid var(--line);border-radius:12px;padding:16px 18px;
+    color:#8b95a5;font-size:.8rem;background:var(--bg-soft);
+  }
+  .foot-links{display:flex;gap:22px;font-size:.86rem;color:var(--muted);flex-wrap:wrap}
+  .foot-links a:hover{color:var(--ink)}
+
+  /* ---------- follow popup ---------- */
+  .modal-backdrop{
+    position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;
+    padding:20px;background:rgba(5,7,9,.72);backdrop-filter:blur(6px);
+    opacity:0;visibility:hidden;transition:opacity .28s ease,visibility .28s ease;
+  }
+  .modal-backdrop.show{opacity:1;visibility:visible}
+  .modal{
+    position:relative;width:100%;max-width:380px;
+    background:linear-gradient(180deg,#171b22,#12151b);
+    border:1px solid #2b3240;border-radius:20px;padding:30px 26px 24px;
+    box-shadow:0 30px 80px -20px rgba(0,0,0,.8),0 0 0 1px rgba(247,147,26,.06);
+    text-align:center;transform:translateY(18px) scale(.97);
+    transition:transform .34s cubic-bezier(.2,.9,.3,1.1);
+  }
+  .modal-backdrop.show .modal{transform:translateY(0) scale(1)}
+  .modal:before{
+    content:"";position:absolute;inset:-1px -1px auto -1px;height:130px;border-radius:20px 20px 0 0;
+    background:radial-gradient(70% 100% at 50% 0%,rgba(247,147,26,.18),transparent 70%);
+    pointer-events:none;
+  }
+  .modal-close{
+    position:absolute;top:12px;right:12px;width:30px;height:30px;border-radius:8px;
+    display:grid;place-items:center;background:transparent;border:1px solid transparent;
+    color:#8b95a5;cursor:pointer;font-size:1rem;line-height:1;font-family:inherit;transition:.15s;
+  }
+  .modal-close:hover{color:var(--ink);background:rgba(255,255,255,.05);border-color:var(--line)}
+  .avatar{
+    width:74px;height:74px;border-radius:50%;margin:0 auto 16px;display:grid;place-items:center;
+    font-weight:700;font-size:1.4rem;letter-spacing:-.02em;color:#1a1206;
+    background:linear-gradient(140deg,#f7931a,#ffb44d);
+    box-shadow:0 0 0 4px rgba(247,147,26,.14),0 0 0 5px rgba(247,147,26,.28);
+    position:relative;
+  }
+  .avatar .dot{
+    position:absolute;right:2px;bottom:2px;width:16px;height:16px;border-radius:50%;
+    background:#e1306c;border:3px solid #14181f;
+  }
+  .modal h3{margin:0;font-size:1.28rem;letter-spacing:-.02em;font-weight:600}
+  .modal .handle{color:var(--amber);font-size:.88rem;font-weight:500;margin-top:3px}
+  .modal .role{
+    display:inline-block;margin-top:12px;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+    font-weight:700;color:#9aa4b4;background:rgba(255,255,255,.04);
+    border:1px solid var(--line);padding:3px 10px;border-radius:99px;
+  }
+  .modal .msg{color:var(--muted);font-size:.9rem;margin:14px 0 20px;line-height:1.6}
+  .ig-btn{
+    display:flex;align-items:center;justify-content:center;gap:9px;width:100%;
+    padding:13px 18px;border-radius:12px;font-weight:600;font-size:.94rem;color:#fff;
+    background:linear-gradient(95deg,#f9ce34,#ee2a7b 48%,#6228d7);
+    box-shadow:0 10px 26px -10px rgba(238,42,123,.75);transition:.18s;
+  }
+  .ig-btn:hover{filter:brightness(1.08);transform:translateY(-1px);box-shadow:0 14px 30px -10px rgba(238,42,123,.85)}
+  .ig-btn svg{flex:0 0 auto}
+  .modal .later{
+    display:inline-block;margin-top:14px;background:none;border:none;cursor:pointer;
+    color:#7d8798;font-size:.82rem;font-family:inherit;padding:4px 8px;transition:.15s;
+  }
+  .modal .later:hover{color:var(--muted)}
+  .modal .fine{font-size:.7rem;color:#5f6877;margin-top:12px}
+  body.modal-open{overflow:hidden}
+  @media(prefers-reduced-motion:reduce){
+    .modal,.modal-backdrop,.labcard,.result{transition:none;animation:none}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top"><span class="mark">L</span> Ledgerwise</a>
+    <div class="nav-right">
+      <nav class="nav-links" id="navLinks">
+        <a href="#basics">Fundamentals</a>
+        <a href="#supply">Supply</a>
+        <a href="#clock">Halving clock</a>
+        <a href="#scam">Spot the scam</a>
+        <a href="#risk">Risks</a>
+        <a href="#glossary">Glossary</a>
+      </nav>
+      <button class="nav-follow" type="button" data-open-follow aria-label="Follow the creator on Instagram">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>
+        <span>Follow creator</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="hero" id="top">
+  <div class="wrap">
+    <span class="badge">Crypto literacy, minus the hype</span>
+    <h1>Understand the <em>ledger</em> before you trust it.</h1>
+    <p class="lede">
+      Bitcoin and the thousands of coins around it are not magic and not a secret.
+      They are software, incentives and math. This page collects the handful of ideas
+      that actually explain how the system works — the supply cap, the halvings,
+      the keys you hold, and the risks that get skipped in the marketing.
+    </p>
+    <div class="cta">
+      <a class="btn btn-primary" href="#basics">Start with the basics</a>
+      <a class="btn btn-ghost" href="#scam">Try the scam test</a>
+    </div>
+
+    <div class="ticker" id="ticker">
+      <div class="tick">
+        <div class="k">Bitcoin price</div>
+        <div class="v" id="btc-price">—</div>
+        <div class="d" id="btc-chg">loading…</div>
+      </div>
+      <div class="tick">
+        <div class="k">Total market</div>
+        <div class="v" id="mkt-cap">—</div>
+        <div class="d">all cryptocurrencies</div>
+      </div>
+      <div class="tick">
+        <div class="k">BTC dominance</div>
+        <div class="v" id="btc-dom">—</div>
+        <div class="d">share of total market</div>
+      </div>
+      <div class="tick">
+        <div class="k">Coins issued</div>
+        <div class="v">≈95%</div>
+        <div class="d">of the 21 million cap</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="basics">
+  <div class="wrap">
+    <span class="eyebrow">Fundamentals</span>
+    <h2>Six ideas that explain most of it</h2>
+    <p class="sub">If you understand these, you can ignore about 90% of what crypto marketing says — because you can check the claims yourself.</p>
+
+    <div class="grid">
+      <article class="card">
+        <div class="ico">₿</div>
+        <h3>A ledger, not a bank</h3>
+        <p>Bitcoin is a shared record of who owns what, copied onto thousands of independent computers. No single company or government holds the master copy, so there is nothing central to switch off or edit.</p>
+      </article>
+      <article class="card">
+        <div class="ico">◎</div>
+        <h3>Blocks and the chain</h3>
+        <p>Transactions are bundled into blocks. Each block carries a cryptographic fingerprint of the one before it, so rewriting history would mean redoing all the work since then — which is why old records are practically permanent.</p>
+      </article>
+      <article class="card">
+        <div class="ico">⛏</div>
+        <h3>Mining is bookkeeping with a cost</h3>
+        <p>Miners compete to add the next block by burning real electricity on computation. They are paid in new coins plus fees. The cost is the point: it makes faking a block expensive instead of free.</p>
+      </article>
+      <article class="card">
+        <div class="ico">🔑</div>
+        <h3>Keys, not accounts</h3>
+        <p>Your "balance" is an entry anyone can verify. Spending it requires a private key only you should have. Lose the key and the coins stay on the ledger forever, unreachable by anyone — including you.</p>
+      </article>
+      <article class="card">
+        <span class="num">21,000,000</span>
+        <h3>A hard supply cap</h3>
+        <p>The protocol will never issue more than about 21 million bitcoin — precisely 20,999,999.9769, because the last satoshi-level rounding cuts it just short. Every full node rejects any block that breaks that rule.</p>
+      </article>
+      <article class="card">
+        <div class="ico">◐</div>
+        <h3>Halving, every four years</h3>
+        <p>New coins arrive as a mining reward that halves every 210,000 blocks. Bitcoin's annual issuance fell below 1% after the April 2024 halving and will drop under 0.5% around 2028.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="supply">
+  <div class="wrap">
+    <span class="eyebrow">The supply engine</span>
+    <h2>Why the issuance curve matters more than the price chart</h2>
+    <p class="sub">Bitcoin's monetary policy was fixed in 2009 and has never been changed. Each halving cuts the flow of new coins in half, while the stock of existing coins keeps growing — so the ratio of new supply to old supply falls every four years.</p>
+
+    <div class="tablebox">
+      <table>
+        <thead>
+          <tr><th>Halving</th><th>Approx. date</th><th>Block height</th><th>Reward after</th><th>New BTC / day</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Genesis</td><td class="mono">Jan 2009</td><td class="mono">0</td><td class="mono">50 BTC</td><td class="mono">~7,200</td></tr>
+          <tr><td>1st</td><td class="mono">Nov 2012</td><td class="mono">210,000</td><td class="mono">25 BTC</td><td class="mono">~3,600</td></tr>
+          <tr><td>2nd</td><td class="mono">Jul 2016</td><td class="mono">420,000</td><td class="mono">12.5 BTC</td><td class="mono">~1,800</td></tr>
+          <tr><td>3rd</td><td class="mono">May 2020</td><td class="mono">630,000</td><td class="mono">6.25 BTC</td><td class="mono">~900</td></tr>
+          <tr><td>4th</td><td class="mono">Apr 2024</td><td class="mono">840,000</td><td class="mono">3.125 BTC</td><td class="mono">~450</td></tr>
+          <tr class="now"><td>5th <span class="pill">next</span></td><td class="mono">~2028</td><td class="mono">1,050,000</td><td class="mono">1.5625 BTC</td><td class="mono">~225</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">
+      Halvings trigger by block height, not by the calendar, so projected dates drift with block speed.
+      Issuance ends entirely around 2140, at which point miners are paid by fees alone — an open question
+      for the network's long-term security budget.
+    </p>
+  </div>
+</section>
+
+<section id="clock">
+  <div class="wrap">
+    <span class="eyebrow">Live</span>
+    <h2>The clock that runs Bitcoin's economy</h2>
+    <p class="sub">Countdown to the estimated fifth halving, when the block reward drops from 3.125 to 1.5625 BTC and new daily issuance halves again.</p>
+
+    <div class="clockpanel">
+      <div class="clockhead">
+        <div>
+          <div class="clocklabel">Next halving</div>
+          <div class="clocktitle">Block 1,050,000 &middot; estimated April 2028</div>
+        </div>
+        <span class="clockbadge" id="clockStatus">Counting down</span>
+      </div>
+
+      <div class="countdown" aria-live="off">
+        <div class="unit"><div class="n" id="cd-d">—</div><div class="l">Days</div></div>
+        <div class="unit"><div class="n" id="cd-h">—</div><div class="l">Hours</div></div>
+        <div class="unit"><div class="n" id="cd-m">—</div><div class="l">Minutes</div></div>
+        <div class="unit"><div class="n" id="cd-s">—</div><div class="l">Seconds</div></div>
+      </div>
+
+      <div class="bar">
+        <div class="bar-track"><div class="bar-fill" id="barFill"></div></div>
+        <div class="bar-meta">
+          <span>4th halving &middot; block 840,000 &middot; Apr 2024</span>
+          <span id="barPct">0% of the cycle elapsed</span>
+          <span>block 1,050,000</span>
+        </div>
+      </div>
+
+      <div class="clockstats">
+        <div><div class="k">Blocks to go</div><div class="v" id="blocksLeft">—</div></div>
+        <div><div class="k">Reward after halving</div><div class="v">1.5625 BTC</div></div>
+        <div><div class="k">Annual issuance after</div><div class="v" id="issuance">≈0.28%</div></div>
+      </div>
+    </div>
+    <p class="note">
+      The date is an estimate, not a promise: blocks are found roughly every ten minutes, so the exact
+      halving moment depends on how fast the network has hashed since the last one. The countdown assumes
+      an even ten-minute block time from the previous halving.
+    </p>
+  </div>
+</section>
+
+<section id="scam">
+  <div class="wrap">
+    <div class="lab-head">
+      <div>
+        <span class="eyebrow">Scam lab</span>
+        <h2>Spot the one that isn't a trap</h2>
+        <p class="sub">Four messages land in your world this week. Three are wallet drainers. Tap the one you would actually trust.</p>
+      </div>
+      <div class="lab-tip">Rule of thumb: <b>nobody legitimate ever needs your seed phrase</b></div>
+    </div>
+
+    <div class="lab-grid" id="labGrid"></div>
+
+    <div class="result" id="labResult">
+      <div class="rhead">
+        <span class="verdictbig" id="verdictBig">—</span>
+      </div>
+      <p class="rsub" id="verdictSub"></p>
+      <ul class="tells" id="tellsList"></ul>
+      <button class="btn btn-ghost again" type="button" id="tryAgain">Try another round</button>
+    </div>
+  </div>
+</section>
+
+<section id="risk" class="risk">
+  <div class="wrap">
+    <span class="eyebrow">Before you buy</span>
+    <h2>Four risks that survive every bull market</h2>
+    <p class="sub">Crypto is a young, volatile, lightly regulated asset class where irreversible mistakes are normal. None of these problems get solved by being early.</p>
+
+    <div class="risk-grid">
+      <div class="risk-item">
+        <div class="tag">1</div>
+        <div>
+          <h4>Volatility is not a bug</h4>
+          <p>Total crypto market value has swung from roughly $2.1 trillion to $3.0 trillion within a single quarter, and bitcoin dominance has ranged from about 56% to 60% this year. Position sizes should assume a 50–80% drawdown is possible.</p>
+        </div>
+      </div>
+      <div class="risk-item">
+        <div class="tag">2</div>
+        <div>
+          <h4>Self-custody cuts both ways</h4>
+          <p>Holding your own keys removes counterparty risk and adds personal risk: a lost seed phrase, a phishing site, or a malware-infested browser can wipe a balance with no chargeback and no support line.</p>
+        </div>
+      </div>
+      <div class="risk-item">
+        <div class="tag">3</div>
+        <div>
+          <h4>Most tokens are not bitcoin</h4>
+          <p>The top asset has a fixed, verifiable supply and fifteen years of uptime. A new coin may have an unlimited supply, an upgradeable contract that can be changed by its team, or a token whose main product is the token itself.</p>
+        </div>
+      </div>
+      <div class="risk-item">
+        <div class="tag">4</div>
+        <div>
+          <h4>Yield usually means someone else's risk</h4>
+          <p>Lending platforms, "staking rewards" and algorithmic stablecoins have repeatedly failed in ways depositors did not understand. If you cannot name where the return comes from, you are probably the return.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="glossary">
+  <div class="wrap">
+    <span class="eyebrow">Glossary</span>
+    <h2>Plain-language definitions</h2>
+
+    <dl class="gloss">
+      <div><dt>Satoshi</dt><dd>The smallest unit of bitcoin: 0.00000001 BTC. Named after Bitcoin's pseudonymous creator, whose identity is still unknown.</dd></div>
+      <div><dt>Private key</dt><dd>A long secret number that proves ownership. Whoever holds it controls the coins; there is no password reset.</dd></div>
+      <div><dt>Seed phrase</dt><dd>Twelve or twenty-four words that regenerate a whole wallet. Treat it like the deed to a house — never type it into a website.</dd></div>
+      <div><dt>Cold storage</dt><dd>Keeping keys on a device that never touches the internet, so remote attackers have nothing to reach.</dd></div>
+      <div><dt>Dominance</dt><dd>One asset's market cap divided by the total crypto market cap. It measures relative size, not quality.</dd></div>
+      <div><dt>Stablecoin</dt><dd>A token pegged to a currency, usually the dollar. The peg depends entirely on the issuer's reserves and is only as solid as they are.</dd></div>
+      <div><dt>Gas fee</dt><dd>A payment for the computation a network must do to process your transaction. Fees rise when the network is busy.</dd></div>
+      <div><dt>Proof of stake</dt><dd>An alternative to mining where validators are chosen in proportion to coins locked up. It trades electricity for capital at risk.</dd></div>
+      <div><dt>Approval</dt><dd>Permission you grant a contract to move your tokens. Unlimited approvals are the single most exploited permission in crypto.</dd></div>
+      <div><dt>Drainer</dt><dd>Malicious software or a fake site that tricks you into signing away your funds, usually in one irreversible click.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="#top"><span class="mark">L</span> Ledgerwise</a>
+        <p>An independent, plain-language reference for how Bitcoin and crypto assets work. No sponsors, no affiliate links, no price predictions.</p>
+      </div>
+      <nav class="foot-links">
+        <a href="#basics">Fundamentals</a>
+        <a href="#clock">Halving clock</a>
+        <a href="#scam">Scam lab</a>
+        <a href="#risk">Risks</a>
+        <a href="#glossary">Glossary</a>
+      </nav>
+    </div>
+    <div class="disclaimer">
+      Educational content only. Nothing here is financial, investment, legal or tax advice, and nothing is a recommendation to buy or sell any asset. Crypto assets are volatile and you can lose everything you put in. Figures marked as live are fetched from a public price API and may be delayed or unavailable. The scam examples are illustrations, not real domains.
+    </div>
+  </div>
+</footer>
+
+<!-- follow-the-creator popup -->
+<div class="modal-backdrop" id="followModal" role="dialog" aria-modal="true" aria-labelledby="followTitle" aria-describedby="followMsg">
+  <div class="modal">
+    <button class="modal-close" type="button" data-close-follow aria-label="Close popup">&#10005;</button>
+    <div class="avatar" aria-hidden="true">VB<span class="dot"></span></div>
+    <h3 id="followTitle">Vansh Bansal</h3>
+    <div class="handle">@vanshbansal_08</div>
+    <span class="role">Creator &amp; curator</span>
+    <p class="msg" id="followMsg">
+      I built Ledgerwise to explain crypto without the hype.
+      Follow along on Instagram for new breakdowns, charts and plain-language notes.
+    </p>
+    <a class="ig-btn" id="igLink" href="https://www.instagram.com/vanshbansal_08?exln=M2NlOWh4eThzZzF0" target="_blank" rel="noopener noreferrer">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.7" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg>
+      Follow on Instagram
+    </a>
+    <button class="later" type="button" data-close-follow>Maybe later</button>
+    <div class="fine">Opens Instagram in a new tab</div>
+  </div>
+</div>
+
+<script>
+  /* ---------- live market strip ---------- */
+  const fmtMoney = (n, digits = 0) =>
+    "$" + Number(n).toLocaleString("en-US", { maximumFractionDigits: digits, minimumFractionDigits: digits });
+
+  async function loadMarket() {
+    const priceEl = document.getElementById("btc-price");
+    const chgEl = document.getElementById("btc-chg");
+    const capEl = document.getElementById("mkt-cap");
+    const domEl = document.getElementById("btc-dom");
+
+    try {
+      const [priceRes, globalRes] = await Promise.all([
+        fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true"),
+        fetch("https://api.coingecko.com/api/v3/global")
+      ]);
+      if (!priceRes.ok || !globalRes.ok) throw new Error("rate limited");
+
+      const p = (await priceRes.json()).bitcoin;
+      const g = (await globalRes.json()).data;
+
+      priceEl.textContent = fmtMoney(p.usd);
+      const chg = p.usd_24h_change ?? 0;
+      chgEl.textContent = (chg >= 0 ? "▲ " : "▼ ") + Math.abs(chg).toFixed(2) + "% in 24h";
+      chgEl.className = "d " + (chg >= 0 ? "up" : "down");
+      capEl.textContent = "$" + (g.total_market_cap.usd / 1e12).toFixed(2) + "T";
+      domEl.textContent = g.market_cap_percentage.btc.toFixed(1) + "%";
+    } catch (e) {
+      priceEl.textContent = "Unavailable";
+      chgEl.textContent = "live feed offline";
+      chgEl.className = "d";
+      capEl.textContent = "~$2.7T";
+      domEl.textContent = "~58%";
+    }
+  }
+  loadMarket();
+
+  /* ---------- halving countdown ---------- */
+  (function () {
+    const LAST = Date.UTC(2024, 3, 20, 0, 0, 0);
+    const NEXT = Date.UTC(2028, 3, 3, 0, 0, 0);
+    const SPAN_BLOCKS = 210000;
+
+    const dEl = document.getElementById("cd-d");
+    const hEl = document.getElementById("cd-h");
+    const mEl = document.getElementById("cd-m");
+    const sEl = document.getElementById("cd-s");
+    const fill = document.getElementById("barFill");
+    const pctEl = document.getElementById("barPct");
+    const blocksEl = document.getElementById("blocksLeft");
+    const statusEl = document.getElementById("clockStatus");
+
+    const pad = n => String(n).padStart(2, "0");
+
+    function tick() {
+      const now = Date.now();
+      let diff = NEXT - now;
+
+      if (diff <= 0) {
+        dEl.textContent = "00"; hEl.textContent = "00"; mEl.textContent = "00"; sEl.textContent = "00";
+        statusEl.textContent = "Halving due";
+        fill.style.width = "100%";
+        pctEl.textContent = "cycle complete";
+        blocksEl.textContent = "0";
+        return;
+      }
+
+      const day = Math.floor(diff / 86400000);
+      diff -= day * 86400000;
+      const hr = Math.floor(diff / 3600000);
+      diff -= hr * 3600000;
+      const min = Math.floor(diff / 60000);
+      diff -= min * 60000;
+      const sec = Math.floor(diff / 1000);
+
+      dEl.textContent = day.toLocaleString("en-US");
+      hEl.textContent = pad(hr);
+      mEl.textContent = pad(min);
+      sEl.textContent = pad(sec);
+
+      const elapsed = Math.min(1, Math.max(0, (now - LAST) / (NEXT - LAST)));
+      fill.style.width = (elapsed * 100).toFixed(1) + "%";
+      pctEl.textContent = (elapsed * 100).toFixed(1) + "% of the cycle elapsed";
+
+      const blocks = Math.max(0, Math.round((1 - elapsed) * SPAN_BLOCKS));
+      blocksEl.textContent = blocks.toLocaleString("en-US");
+    }
+
+    tick();
+    setInterval(tick, 1000);
+  })();
+
+  /* ---------- scam lab ---------- */
+  (function () {
+    const SCENARIOS = [
+      {
+        tag: "Email",
+        icon: "\u2709",
+        source: "support@coinbase-secure-verify.com",
+        title: "Unusual sign-in detected",
+        body: "We noticed a login from a new device. To restore access, reply with your 12-word recovery phrase so we can verify ownership. Case closes in 24 hours.",
+        safe: false,
+        why: "No exchange, wallet maker or support agent ever needs your recovery phrase. Whoever holds those words owns the funds, so the request is the attack. The domain also isn't the real one: it borrows the brand name with extra words bolted on."
+      },
+      {
+        tag: "DM",
+        icon: "\u25A3",
+        source: "@ledger_support_official",
+        title: "Your wallet needs to sync",
+        body: "Hi, we're from wallet support. Your device is out of date and funds are at risk. Visit ledger-live-sync.com, enter your seed phrase and approve the sync.",
+        safe: false,
+        why: "A stranger in your DMs is never support \u2014 support cannot see your balance and has no reason to. \"Sync\" is not a thing you do by typing a seed phrase into a website. Urgency plus a hyphenated lookalike domain is the signature move."
+      },
+      {
+        tag: "Airdrop",
+        icon: "\u25C8",
+        source: "claim-rewards-eth.xyz",
+        title: "You have 2.4 ETH to claim",
+        body: "Congratulations! Connect your wallet and sign to receive your allocation. This approval covers all future transactions so you only sign once. Offer expires in 09:58.",
+        safe: false,
+        why: "Free money you didn't apply for is bait. The giveaway is the word \"approval\": an unlimited approval lets a contract move your tokens whenever it likes, long after the site is gone. Countdown timers exist to stop you reading the details."
+      },
+      {
+        tag: "In-app",
+        icon: "\u2699",
+        source: "You opened it yourself \u2014 ledger.com",
+        title: "Firmware update available",
+        body: "Version 3.4 improves how transactions are displayed on screen. Download from the official page. We will never ask for your recovery phrase or ask you to sign a transaction to update.",
+        safe: true,
+        why: "This is the one. You navigated to it yourself rather than being pulled in by a link, it points to a domain you can verify character by character, it asks for no secret, and it explicitly tells you what it will never request. Calm and boring is usually genuine."
+      }
+    ];
+
+    const grid = document.getElementById("labGrid");
+    const result = document.getElementById("labResult");
+    const bigEl = document.getElementById("verdictBig");
+    const subEl = document.getElementById("verdictSub");
+    const tellsEl = document.getElementById("tellsList");
+
+    const shuffle = arr => {
+      const a = arr.slice();
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    };
+
+    let solved = false;
+    let currentOrder = SCENARIOS;
+
+    function render(order) {
+      grid.innerHTML = "";
+      solved = false;
+      result.classList.remove("show");
+
+      order.forEach((item, idx) => {
+        const card = document.createElement("button");
+        card.type = "button";
+        card.className = "labcard";
+        card.setAttribute("aria-label", "Message " + (idx + 1) + " from " + item.source);
+
+        const top = document.createElement("div");
+        top.className = "top";
+        top.innerHTML =
+          '<span class="ic">' + item.icon + "</span>" +
+          '<span class="src"></span>' +
+          '<span class="tagm">' + item.tag + "</span>";
+        top.querySelector(".src").textContent = item.source;
+
+        const h = document.createElement("h4");
+        h.textContent = item.title;
+
+        const p = document.createElement("p");
+        p.textContent = item.body;
+
+        const v = document.createElement("div");
+        v.className = "verdict";
+        v.innerHTML = '<span class="dotv"></span><span class="vt"></span>';
+        v.querySelector(".vt").textContent = item.safe
+          ? "Genuine \u2014 nothing secret requested"
+          : "Trap \u2014 you'd be handing over funds";
+
+        card.appendChild(top);
+        card.appendChild(h);
+        card.appendChild(p);
+        card.appendChild(v);
+
+        card.addEventListener("click", () => choose(item, card));
+        grid.appendChild(card);
+      });
+    }
+
+    function choose(item, card) {
+      if (solved) return;
+      solved = true;
+
+      const cards = [...grid.querySelectorAll(".labcard")];
+      cards.forEach((c, i) => {
+        c.classList.add("locked");
+        c.classList.add(currentOrder[i].safe ? "reveal-safe" : "reveal-fake");
+        if (c !== card) c.classList.add("dimmed");
+      });
+
+      bigEl.textContent = item.safe ? "Correct \u2014 that's the safe one." : "That one is a drainer.";
+      bigEl.className = "verdictbig " + (item.safe ? "ok" : "bad");
+      subEl.textContent = item.safe
+        ? "You picked the update that never asks for a secret. Here's why the other three were built to steal:"
+        : "Here's what gives each one away \u2014 including the one that was actually fine:";
+
+      tellsEl.innerHTML = "";
+      currentOrder.forEach((s, i) => {
+        const li = document.createElement("li");
+        const n = document.createElement("span");
+        n.className = "n";
+        n.textContent = s.safe ? "\u2713" : "\u2715";
+        const txt = document.createElement("span");
+        const label = document.createElement("b");
+        label.textContent = (i + 1) + ". " + (s.safe ? "Safe" : "Fake") + " \u2014 " + s.tag + ": ";
+        txt.appendChild(label);
+        txt.appendChild(document.createTextNode(s.why));
+        li.appendChild(n);
+        li.appendChild(txt);
+        tellsEl.appendChild(li);
+      });
+
+      result.classList.add("show");
+      if (!item.safe) {
+        result.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+    }
+
+    function start() {
+      currentOrder = shuffle(SCENARIOS);
+      render(currentOrder);
+    }
+
+    document.getElementById("tryAgain").addEventListener("click", () => {
+      start();
+      document.getElementById("scam").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    start();
+  })();
+
+  /* ---------- active nav highlighting ---------- */
+  (function () {
+    const links = [...document.querySelectorAll("#navLinks a")];
+    const sections = links
+      .map(a => document.querySelector(a.getAttribute("href")))
+      .filter(Boolean);
+
+    if (!("IntersectionObserver" in window) || !sections.length) return;
+
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (!en.isIntersecting) return;
+        links.forEach(a =>
+          a.classList.toggle("active", a.getAttribute("href") === "#" + en.target.id)
+        );
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+
+    sections.forEach(s => obs.observe(s));
+  })();
+
+  /* ---------- follow popup ---------- */
+  (function () {
+    const backdrop = document.getElementById("followModal");
+    const SEEN_KEY = "ledgerwise_follow_seen";
+    let lastFocus = null;
+
+    function openModal() {
+      if (backdrop.classList.contains("show")) return;
+      lastFocus = document.activeElement;
+      backdrop.classList.add("show");
+      document.body.classList.add("modal-open");
+      const btn = backdrop.querySelector(".ig-btn");
+      if (btn) btn.focus({ preventScroll: true });
+    }
+
+    function closeModal(remember) {
+      backdrop.classList.remove("show");
+      document.body.classList.remove("modal-open");
+      if (remember) {
+        try { sessionStorage.setItem(SEEN_KEY, "1"); } catch (e) {}
+      }
+      if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+    }
+
+    let alreadySeen = false;
+    try { alreadySeen = sessionStorage.getItem(SEEN_KEY) === "1"; } catch (e) {}
+
+    if (!alreadySeen) {
+      const timer = setTimeout(openModal, 5000);
+      const onScroll = () => {
+        const pct = window.scrollY / Math.max(1, document.body.scrollHeight - window.innerHeight);
+        if (pct > 0.4) {
+          clearTimeout(timer);
+          openModal();
+          window.removeEventListener("scroll", onScroll);
+        }
+      };
+      window.addEventListener("scroll", onScroll, { passive: true });
+    }
+
+    document.querySelectorAll("[data-close-follow]").forEach(el => {
+      el.addEventListener("click", () => closeModal(true));
+    });
+
+    document.querySelectorAll("[data-open-follow]").forEach(el => {
+      el.addEventListener("click", openModal);
+    });
+
+    backdrop.addEventListener("click", e => {
+      if (e.target === backdrop) closeModal(true);
+    });
+
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape" && backdrop.classList.contains("show")) closeModal(true);
+    });
+
+    const ig = document.getElementById("igLink");
+    if (ig) ig.addEventListener("click", () => closeModal(true));
+  })();
+</script>
+</body>
+</html>
