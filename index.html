@@ -33,9 +33,8 @@
 <meta name="twitter:image" content="https://your-username.github.io/ledgerwise/og-image.png">
 <meta name="twitter:image:alt" content="Ledgerwise — Understand the ledger before you trust it">
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23f7931a'/%3E%3Ctext x='16' y='23' font-family='Arial' font-size='19' font-weight='bold' fill='%2312100c' text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E">
-<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23f7931a'/%3E%3Ctext x='16' y='23' font-family='Arial' font-size='19' font-weight='bold' fill='%2312100c' text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E">
-
+<link rel="icon" type="image/png" sizes="32x32" href="/ledgerwise-icon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/ledgerwise-icon-180.png"> 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -91,10 +90,12 @@
   .nav-in{display:flex;align-items:center;justify-content:space-between;height:66px}
   .brand{display:flex;align-items:center;gap:11px;font-weight:600;letter-spacing:-.02em;font-size:1.05rem}
   .mark{
-    width:30px;height:30px;border-radius:9px;display:grid;place-items:center;
-    background:linear-gradient(140deg,#f7931a,#ffb44d);color:#12100c;font-weight:700;font-size:.95rem;
-    box-shadow:0 4px 18px rgba(247,147,26,.35);
-  }
+  width:26px;
+  height:26px;
+  display:block;
+  flex:0 0 auto;
+  margin-top:-2px;
+}
   .nav-right{display:flex;align-items:center;gap:22px}
   .nav-links{display:flex;gap:24px;font-size:.88rem;color:var(--muted)}
   .nav-links a:hover{color:var(--ink)}
@@ -420,7 +421,17 @@
 
 <header class="nav">
   <div class="wrap nav-in">
-    <a class="brand" href="#top"><span class="mark">L</span> Ledgerwise</a>
+    <a class="brand" href="#top">
+  <svg class="mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+    <g fill="#f7931a">
+      <rect x="13" y="13" width="28" height="6"/>
+      <rect x="13" y="13" width="6" height="38"/>
+      <rect x="19" y="30.5" width="18" height="5"/>
+      <rect x="13" y="45" width="38" height="6"/>
+    </g>
+  </svg>
+  Ledgerwise
+</a>
     <div class="nav-right">
       <nav class="nav-links" id="navLinks">
         <a href="#basics">Fundamentals</a>
